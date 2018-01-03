@@ -1,3 +1,0 @@
-# Java Expression Evaluator
-
-### Usage

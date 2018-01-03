@@ -4,7 +4,7 @@ public class ExpressionEvaluatorTest {
 
         String expression = "(4 + 2) * 8";
 
-        int result = ExpressionEvaluator.evaluate(expression);
+        double result = ExpressionEvaluator.evaluate(expression);
 
         System.out.println(expression + " = " + result);
     }

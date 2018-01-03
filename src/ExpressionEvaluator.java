@@ -14,7 +14,7 @@ public class ExpressionEvaluator {
         }
     }
 
-    private static int applyOp(char op, int b, int a) {
+    private static double applyOp(char op, double b, double a) {
         switch (op) {
             case '+':
                 return a + b;
@@ -31,12 +31,12 @@ public class ExpressionEvaluator {
         return 0;
     }
 
-    public static int evaluate(String expression) {
+    public static double evaluate(String expression) {
         // Get the tokens
         char[] tokens = expression.toCharArray();
 
         // Stack of numbers 'values'
-        Stack<Integer> values = new Stack<Integer>();
+        Stack<Double> values = new Stack<Double>();
 
         // Stack of operaors 'ops'
         Stack<Character> ops = new Stack<Character>();
@@ -50,10 +50,10 @@ public class ExpressionEvaluator {
             // Token is number
             if (tokens[i] >= '0' && tokens[i] <= '9') {
                 StringBuffer sb = new StringBuffer();
-                while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9') {
+                while (i < tokens.length && ((tokens[i] >= '0' && tokens[i] <= '9') || tokens[i] == '.')) {
                     sb.append(tokens[i++]);
                 }
-                values.push( Integer.parseInt(sb.toString()) );
+                values.push( Double.parseDouble(sb.toString()) );
                 i--;
             }
 
@@ -90,7 +90,7 @@ public class ExpressionEvaluator {
 
     public static void main(String[] args) {
         try {
-            System.out.println(evaluate("(4 + 2) * 8"));
+            System.out.println(evaluate("(4.2 + 1.8) * 8"));
         } catch (Exception e) {
             System.out.println("Invalid input");
         }
